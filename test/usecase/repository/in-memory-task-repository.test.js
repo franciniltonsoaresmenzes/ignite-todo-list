@@ -7,6 +7,18 @@ import { Task } from '../../../src/entities/taks.js'
  const newTask = new Task()
 
 describe('In memory taks repository', () => {
+  it('Should display all tasks', () => {
+    const title = 'Task 01'
+    const description = 'Descrição da Task 01'
+
+    const task = newTask.create({ title, description })
+    const repo = new InMemoryTaskRepository()
+    repo.create(task)
+
+    deepStrictEqual(repo.select().length, 1)
+
+  })
+
   it('should add task', () => {
     const title = 'Task 01'
     const description = 'Descrição da Task 01'
