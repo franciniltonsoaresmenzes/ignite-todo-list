@@ -42,4 +42,16 @@ describe('In memory taks repository', () => {
 
     deepStrictEqual(repo.select().length, 0)
   })
+
+  it('Mark a task as completed', () => {
+    const title = 'Task 01'
+    const description = 'Descrição da Task 01'
+
+    const task = newTask.create({ title, description })
+    const repo = new InMemoryTaskRepository()
+    repo.create(task, '123')
+    repo.doneTask('123')
+
+    deepStrictEqual(repo.select()[0].completed_at, new Date())
+  })
 })
