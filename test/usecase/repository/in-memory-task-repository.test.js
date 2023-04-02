@@ -7,7 +7,7 @@ import { Task } from '../../../src/entities/taks.js'
  const newTask = new Task()
 
 describe('In memory taks repository', () => {
-  it('should add task with complete data to mailing list', () => {
+  it('should add task', () => {
     const title = 'Task 01'
     const description = 'Descrição da Task 01'
 
@@ -17,5 +17,17 @@ describe('In memory taks repository', () => {
 
 
     deepStrictEqual(repo.select({ title }).length, 1)
+  })
+
+  it('should update task', () => {
+    const title = 'Task 01'
+    const description = 'Descrição da Task 01'
+
+    const task = newTask.create({ title, description })
+    const repo = new InMemoryTaskRepository()
+    repo.create(task, '123')
+    repo.update({ title: 'Task 02', description }, '123')
+
+    deepStrictEqual(repo.select()[0].title, 'Task 02')
   })
 })
