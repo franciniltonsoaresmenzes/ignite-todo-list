@@ -33,4 +33,11 @@ export class InMemoryTaskRepository {
       this.#repository[rowIndex] = { id, ...data }
     }
   }
+
+  delete(id) {
+    const rowIndex = this.#repository.findIndex(row => row.id === id)
+    if (rowIndex > -1) {
+      this.#repository.splice(rowIndex, 1)
+    }
+  }
 }
