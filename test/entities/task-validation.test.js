@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test'
 import { deepStrictEqual } from 'node:assert'
-import { Task } from '../src/entities/taks.js'
+import { Task } from '../../src/entities/taks.js'
 
 const newTask =  new Task()
 
