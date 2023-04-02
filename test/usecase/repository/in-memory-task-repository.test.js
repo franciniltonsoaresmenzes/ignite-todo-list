@@ -30,4 +30,16 @@ describe('In memory taks repository', () => {
 
     deepStrictEqual(repo.select()[0].title, 'Task 02')
   })
+
+  it('should delete task', () => {
+    const title = 'Task 01'
+    const description = 'Descrição da Task 01'
+
+    const task = newTask.create({ title, description })
+    const repo = new InMemoryTaskRepository()
+    repo.create(task, '123')
+    repo.delete('123')
+
+    deepStrictEqual(repo.select().length, 0)
+  })
 })
