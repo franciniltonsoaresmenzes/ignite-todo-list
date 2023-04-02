@@ -3,12 +3,15 @@ import { randomUUID } from 'node:crypto'
 export class InMemoryTaskRepository {
   #repository = []
 
-  create({ title, description }) {
-    const id = randomUUID()
-    const created_at = new Date()
-    const completed_at = null
-    const updated_at = null
-    this.#repository.push({ id, title, description, created_at,  completed_at, updated_at }) 
+  create({ title, description  }, id) {
+    this.#repository.push({ 
+      id: id ?? randomUUID(), 
+      title, 
+      description, 
+      created_at: new Date(),  
+      completed_at: null, 
+      updated_at: null 
+    }) 
   }
   select(search) {
     let data = this.#repository ?? []
@@ -21,5 +24,13 @@ export class InMemoryTaskRepository {
       })
     }
     return data
+  }
+
+  update(data, id) {
+    const rowIndex = this.#repository.findIndex(row => row.id === id)
+
+    if (rowIndex > -1) {
+      this.#repository[rowIndex] = { id, ...data }
+    }
   }
 }
