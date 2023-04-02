@@ -6,7 +6,7 @@ const newTask =  new Task()
 
 describe('Task validation', () => {
   it('should create on task', () => {
-    const task = { title: 'Task 10', description: 'Descrição da Task 01' }
+    const task = { title: 'Task 01', description: 'Descrição da Task 01' }
 
     const createNewTask = newTask.create(task)
     deepStrictEqual(createNewTask, task)
