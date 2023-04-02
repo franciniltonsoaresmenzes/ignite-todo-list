@@ -30,7 +30,7 @@ export class InMemoryTaskRepository {
     const rowIndex = this.#repository.findIndex(row => row.id === id)
 
     if (rowIndex > -1) {
-      this.#repository[rowIndex] = { id, ...data }
+      this.#repository[rowIndex] = { id, updated_at: new Date(), ...data }
     }
   }
 
@@ -38,6 +38,16 @@ export class InMemoryTaskRepository {
     const rowIndex = this.#repository.findIndex(row => row.id === id)
     if (rowIndex > -1) {
       this.#repository.splice(rowIndex, 1)
+    }
+  }
+
+  doneTask(id) {
+    const rowIndex = this.#repository.findIndex(row => row.id === id)
+
+    if (rowIndex > -1) {
+      const data = this.#repository[rowIndex]  
+      data.completed_at = new Date()
+      data.updated_at = new Date()
     }
   }
 }
