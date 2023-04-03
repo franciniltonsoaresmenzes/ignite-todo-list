@@ -30,13 +30,14 @@ export class Database {
   select(search) {
     let data = this.#repository ?? []
 
-    if (search) {
-      data.filter(row => {
-        return Object.entries(search).some(([ key, value ]) => {
-          return row[key].toLowerCase().includes(value.toLowerCase());
+     if (search) {
+      data = data.filter(row => {
+        return Object.entries(search).some(([key, value]) => {
+          return row[key].toLowerCase().includes(value.toLowerCase())
         })
       })
     }
+
     return data
   }
 
