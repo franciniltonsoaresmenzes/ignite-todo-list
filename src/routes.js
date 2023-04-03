@@ -32,5 +32,63 @@ export const routes = [
 
       return res.end(JSON.stringify(task))
     }
+  },
+  {
+    method: 'PUT',
+    path: buildRoutePath('/tasks/:id'),
+    handler: (req, res) => {
+      const { id } = req.params
+      const { title, description } = req.body
+
+      if (!title || !description) {
+        return res.writeHead(404).end(JSON.stringify({ message: 'titulo ou a decrição são campos obrigatorios' }))
+      }
+      
+      const [taks] = database.select({ id })
+
+      if (!taks) {
+        return res.writeHead(404).end(JSON.stringify({ message: 'Task não encontrada' }))
+      }
+
+      database.update({ title, description }, id)
+
+      return res.writeHead(201).end()
+    }
+  },
+  {
+    method: 'DELETE',
+    path: buildRoutePath('/tasks/:id'),
+    handler: (req, res) => {
+      const { id } = req.params
+
+      const [taks] = database.select({ id })
+
+      if (!taks) {
+        return res.writeHead(404).end(JSON.stringify({ message: 'Task não encontrada' }))
+      }
+
+
+      database.delete(id)
+
+      return res.writeHead(201).end()
+    }
+  },
+  {
+    method: 'PATCH',
+    path: buildRoutePath('/tasks/:id/complete'),
+    handler: (req, res) => {
+      const { id } = req.params
+
+      const [taks] = database.select({ id })
+
+      if (!taks) {
+        return res.writeHead(404).end(JSON.stringify({ message: 'Task não encontrada' }))
+      }
+
+
+      database.doneTask(id)
+
+      return res.writeHead(201).end()
+    }
   }
 ]
