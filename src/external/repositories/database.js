@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto'
 import fs from 'node:fs/promises'
 
-const databasePath = new URL('db.json', import.meta.url)
+const databasePath = new URL('../db.json', import.meta.url)
 
 export class Database {
   #repository = []
@@ -25,6 +25,7 @@ export class Database {
       completed_at: null, 
       updated_at: null 
     }) 
+    this.#persist()
   }
   select(search) {
     let data = this.#repository ?? []
