@@ -27,7 +27,7 @@
     
     Listar todas as tasks salvas no banco de dados.
    
-    Filtrando as tasks pelo `title` e `description`
+    E pode filtrar as tasks pelo `title` e `description`
     
  - `PUT - /tasks/:id`
     

@@ -63,7 +63,7 @@ export class Database {
 
     if (rowIndex > -1) {
       const data = this.#repository[rowIndex]  
-      data.completed_at = new Date()
+      data.completed_at = data.completed_at === null ? new Date() : null
       data.updated_at = new Date()
       this.#persist()
     }
