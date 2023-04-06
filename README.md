@@ -57,4 +57,5 @@ $ npm run dev
 ```
 ## :hammer_and_wrench: Tecnologias
   * __Javascript__
-  * __NodeJs Test Native__
+  * __NodeJs__
+  * __Testes nativo__
