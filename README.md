@@ -7,8 +7,8 @@
 <h2>📷 Preview </h2>
   <div style="display: flex; flex-direction: row;">
     <p align="center">
-      <img width="400" style="border-radius: 10px" height="auto" alt="Class-02" title="Class-02" src="/preview/preview-complete-task.gif"  />
-      <img width="400" style="border-radius: 10px" height="auto" alt="Class-02" title="Class-02" src="/preview/preview-test.gif"  />
+      <img width="800" style="border-radius: 10px" height="auto" alt="Class-02" title="Class-02" src="/preview/preview-complete-task.gif"  />
+      <img width="800" style="border-radius: 10px" height="auto" alt="Class-02" title="Class-02" src="/preview/preview-test.gif"  />
     </p>
   <div>
     
